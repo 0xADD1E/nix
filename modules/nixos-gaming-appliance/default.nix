@@ -1,4 +1,4 @@
-{}: {
+{pkgs,...}: {
   boot.plymouth.theme = "colorful_loop";
   boot.plymouth.themePackages = [ (pkgs.adi1090x-plymouth-themes.override { selected_themes = [ "colorful_loop" "rings_2" ]; }) ];
 
