@@ -1,4 +1,4 @@
-{ config, pkgs, myModulesRoot... }: {
+{ config, pkgs, myModulesRoot,... }: {
   inputs = [
     "${myModulesRoot}/gaming"
     ./hardware.nix
