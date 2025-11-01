@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+bin_dir="$(dirname -- "$(realpath -- "${BASH_SOURCE[0]}")")"
+resources="$(realpath $bin_dir/../lib)"
+simplify_paths=true
+program="$resources/nix-path-info-graphviz.jq"
+lg=false
+
+while true ; do
+    case "$1" in
+        --)
+            shift
+            break
+            ;;
+        --help)
+            echo "Usage:"
+            echo "  nix-closure-graph .#packages.x86_64-linux.myDerivation > whyIsThisSoBig.svg";
+            echo "Options:"
+            echo "  --no-simplify-paths: output the full paths in the nix store"
+            echo "  --lg: output json to be used with https://mercurytechnologies.github.io/looking-glass-viewer/"
+            echo "Notes:"
+            echo "  The derivation must have been built previously, otherwise this will give error: path '[NIX_STORE_PATH]' is not valid"
+            exit
+            ;;
+        --no-simplify-paths)
+            simplify_paths=false
+            shift
+            ;;
+        --lg)
+            program="$resources/nix-path-info-lg.jq"
+            lg=true
+            shift
+            ;;
+        *)
+            break
+    esac
+done
+
+output() {
+    if [[ "$lg" == "true" ]]; then
+        cat
+    else
+        dot -Tsvg
+    fi
+}
+
+nix path-info -rsS --json "$@" \
+    | jq -L "$resources" -r -f "$program" \
+        --argjson simplify_paths "$simplify_paths" \
+    | output
