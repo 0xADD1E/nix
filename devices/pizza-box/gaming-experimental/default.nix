@@ -1,10 +1,11 @@
-{ inputs, pkgs, myModulesRoot, ... }: {
+{ inputs, lib, pkgs, myModulesRoot, ... }: {
   imports = [
     ./jank-pre.nix
     inputs.jovian-nixos.nixosModules.jovian
     ./jank-post.nix
   ];
 
+  services.displayManager.sddm.enable = lib.mkForce false;
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = with pkgs.kdePackages;[
     baloo
