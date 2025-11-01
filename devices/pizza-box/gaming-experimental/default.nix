@@ -20,6 +20,9 @@
     steam.autoStart = true;
     steam.user = "user";
     steam.desktopSession = "plasma";
+    steam.environment = {
+      DRI_PRIME="1";
+    };
 
     decky-loader.enable = true;
     decky-loader.extraPackages = [ ];

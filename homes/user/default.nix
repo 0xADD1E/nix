@@ -7,7 +7,7 @@
     in
     {
       home.stateVersion = "25.05";
-      imports = [ ./default ];
+      imports = [ ./default ] ++ (ifFlag "deck" ./deck);
     };
 }
 

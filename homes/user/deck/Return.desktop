@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Game Mode
+Comment=Return to game mode
+Exec=pkill -f startplasma-wayland
+Terminal=false
+Type=Application
