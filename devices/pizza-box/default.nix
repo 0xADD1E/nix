@@ -1,5 +1,5 @@
 { config, pkgs, myModulesRoot, ... }:
-let defaultSpecialisationModules = [ ./gaming ./gaming-experimental ]; in {
+let defaultSpecialisationModules = [ ./gaming ./non-gamingappliance]; in {
   # Default options - always active
   imports = [
     "${myModulesRoot}/nixos-baseline"

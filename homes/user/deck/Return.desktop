@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Game Mode
 Comment=Return to game mode
-Exec=pkill -f startplasma-wayland
+Exec=systemctl restart --user gamescope-session.target
 Terminal=false
 Type=Application
