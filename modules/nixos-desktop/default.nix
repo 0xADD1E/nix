@@ -1,4 +1,4 @@
-{ config, pkgs, myModulesRoot, ... }: {
+{ lib, config, pkgs, myModulesRoot, ... }: {
   imports = [ "${myModulesRoot}/nixos-metal" ];
 
   # Graphical Things

@@ -1,5 +1,5 @@
 { config, pkgs, myModulesRoot, ... }:
-let defaultSpecialisationModules = [./gaming ./gaming-experimental ]; in {
+let defaultSpecialisationModules = [ ./gaming ./gaming-experimental ]; in {
   # Default options - always active
   imports = [
     "${myModulesRoot}/nixos-baseline"
@@ -8,16 +8,16 @@ let defaultSpecialisationModules = [./gaming ./gaming-experimental ]; in {
   ] ++ defaultSpecialisationModules;
 
   specialisation = {
-    gaming-fallback.configuration={...}:{
-      imports = [./non-gamingappliance];
-      disabledModules = [./gaming-experimental];
+    gaming-fallback.configuration = { ... }: {
+      imports = [ ./non-gamingappliance ];
+      disabledModules = [ ./gaming-experimental ];
     };
     obs.configuration = { ... }: {
       imports = [ ./broadcast ./non-gamingappliance ];
       disabledModules = defaultSpecialisationModules;
     };
     vfio.configuration = { ... }: {
-      imports = [ ./vfio ./non-gamingappliance];
+      imports = [ ./vfio ./non-gamingappliance ];
       disabledModules = defaultSpecialisationModules;
     };
   };
