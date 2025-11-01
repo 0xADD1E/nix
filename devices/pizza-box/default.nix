@@ -20,18 +20,9 @@ let defaultSpecialisationModules = [ ./gaming ]; in {
 
   networking.hostName = "pizza-box"; # Define your hostname.
 
-  users.users.user.extraGroups = [ "wheel" "libvirtd" ];
 
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "user";
-  security.sudo = {
-    extraRules = [{
-      commands = [
-        { command = "/run/current-system/sw/bin/bash"; options = [ "NOPASSWD" ]; }
-      ];
-      groups = [ "wheel" ];
-    }];
-  };
 
   programs.firefox.enable = true;
   boot.plymouth.logo = ./goodpup_logo.png;

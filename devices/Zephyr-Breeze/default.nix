@@ -2,8 +2,8 @@
 
 {
   networking.hostName = "Zephyr-Breeze";
-  boot.plymouth.theme = "cross_hud";
-  boot.plymouth.themePackages = [ (pkgs.adi1090x-plymouth-themes.override { selected_themes = [ "cross_hud" ]; }) ];
+  boot.plymouth.theme = "rings_2";
+  boot.plymouth.themePackages = [ (pkgs.adi1090x-plymouth-themes.override { selected_themes = [ "colorful_loop" "rings_2" ]; }) ];
   imports =
     [
       ./hardware-configuration.nix

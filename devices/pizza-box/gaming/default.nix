@@ -1,7 +1,8 @@
 { config, pkgs, myModulesRoot,... }: {
   imports = [
-    "${myModulesRoot}/gaming"
     ./hardware.nix
+    "${myModulesRoot}/gaming"
+    "${myModulesRoot}/nixos-gaming-appliance"
     # ./gamescope.nix
   ];
 
