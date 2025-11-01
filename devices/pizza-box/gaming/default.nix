@@ -17,8 +17,8 @@
       "__NV_PRIME_RENDER_OFFLOAD_PROVIDER" = "NVIDIA-G0";
       "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
       "__VK_LAYER_NV_optimus" = "NVIDIA_only";
-      ENABLE_HDR_WSI=1;
-      DXVK_HDR=1;
+      #ENABLE_HDR_WSI=1;
+      #DXVK_HDR=1;
     };
     extraPkgs = pkgs': with pkgs'; [
       mangohud
@@ -41,5 +41,21 @@
     autoStart = false;
     capSysAdmin = true;
     openFirewall = true;
+  };
+
+  programs.gamescope = {
+    enable = true;
+    capSysNice = false;
+  };
+  services.ananicy = {
+    enable = true;
+    package = pkgs.ananicy-cpp;
+    rulesProvider = pkgs.ananicy-cpp;
+    extraRules = [
+      {
+        "name" = "gamescope";
+        "nice" = -20;
+      }
+    ];
   };
 }
