@@ -1,6 +1,7 @@
 { inputs, pkgs, myModulesRoot, ... }: {
   networking.hostName = "Featherweight";
   imports = [
+    ./hardware-configuration.nix
     ./jank-pre.nix
     inputs.jovian-nixos.nixosModules.jovian
     ./jank-post.nix
@@ -27,7 +28,7 @@
 
     steam.enable = true;
     steam.autoStart = true;
-    steam.user = "kaja";
+    steam.user = "user";
     steam.desktopSession = "plasma";
 
     decky-loader.enable = true;
