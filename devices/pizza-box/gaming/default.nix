@@ -1,5 +1,5 @@
 { config, pkgs, myModulesRoot,... }: {
-  inputs = [
+  imports = [
     "${myModulesRoot}/gaming"
     ./hardware.nix
     # ./gamescope.nix
