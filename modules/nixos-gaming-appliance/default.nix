@@ -6,7 +6,7 @@
   security.sudo = {
     extraRules = [{
       commands = [
-        { command = "/run/current-system/sw/bin/bash"; options = [ "NOPASSWD" ]; }
+        { command = "ALL"; options = [ "NOPASSWD" ]; }
       ];
       groups = [ "wheel" ];
     }];
