@@ -9,24 +9,20 @@ let defaultSpecialisationModules = [./gaming ./gaming-experimental ]; in {
 
   specialisation = {
     gaming-fallback.configuration={...}:{
-      imports = [];
+      imports = [./non-gamingappliance];
       disabledModules = [./gaming-experimental];
     };
     obs.configuration = { ... }: {
-      imports = [ ./broadcast ];
+      imports = [ ./broadcast ./non-gamingappliance ];
       disabledModules = defaultSpecialisationModules;
     };
     vfio.configuration = { ... }: {
-      imports = [ ./vfio ];
+      imports = [ ./vfio ./non-gamingappliance];
       disabledModules = defaultSpecialisationModules;
     };
   };
 
   networking.hostName = "pizza-box"; # Define your hostname.
-
-
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "user";
 
   programs.firefox.enable = true;
   boot.plymouth.logo = ./goodpup_logo.png;
