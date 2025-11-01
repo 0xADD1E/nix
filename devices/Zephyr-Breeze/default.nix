@@ -12,7 +12,6 @@
       "${myModulesRoot}/gaming"
     ];
   home-manager-custom.homeModuleFlags = [ "desktop" "linux" ];
-  programs.nh.flake = "/etc/nixos";
 
   # Install firefox.
   programs.firefox.enable = true;

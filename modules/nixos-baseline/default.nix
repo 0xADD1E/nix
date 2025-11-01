@@ -12,6 +12,7 @@
   ];
 
   nix.package = pkgs.lixPackageSets.stable.lix;
+  programs.nh.flake = lib.mkDefault "/etc/nixos";
 
   # Time and locale and stuff
   time.timeZone = "Europe/London";

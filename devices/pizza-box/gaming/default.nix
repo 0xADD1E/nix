@@ -1,4 +1,4 @@
-{ config, pkgs, myModulesRoot,... }: {
+{ config, pkgs, myModulesRoot, ... }: {
   imports = [
     ./hardware.nix
     "${myModulesRoot}/gaming"
