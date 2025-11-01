@@ -20,12 +20,8 @@ let defaultSpecialisationModules = [ ./gaming ]; in {
 
   networking.hostName = "pizza-box"; # Define your hostname.
 
-  users.users.user = {
-    isNormalUser = true;
-    description = "Local User";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    packages = with pkgs; [ ];
-  };
+  users.users.user.extraGroups = [ "wheel" "libvirtd" ];
+
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "user";
   security.sudo = {

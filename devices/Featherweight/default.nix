@@ -10,6 +10,15 @@
   ];
   home-manager-custom.homeModuleFlags = [ "deck" "linux" ];
 
+  users.users.user.extraGroups = [ "wheel" ];
+  security.sudo = {
+    extraRules = [{
+      commands = [
+        { command = "/run/current-system/sw/bin/bash"; options = [ "NOPASSWD" ]; }
+      ];
+      groups = [ "wheel" ];
+    }];
+  };
 
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = with pkgs.kdePackages;[
