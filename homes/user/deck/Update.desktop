@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Update NixCfg
+Comment=Update nix config from git
+Exec=sh -c "cd /etc/nixos && git pull && nh os switch"
+Terminal=true
+Type=Application
