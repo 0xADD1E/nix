@@ -1,15 +1,9 @@
 { inputs, pkgs, myModulesRoot, ... }: {
-  networking.hostName = "Featherweight";
   imports = [
-    ./hardware-configuration.nix
     ./jank-pre.nix
     inputs.jovian-nixos.nixosModules.jovian
     ./jank-post.nix
-    "${myModulesRoot}/nixos-baseline"
-    "${myModulesRoot}/nixos-metal"
-    "${myModulesRoot}/nixos-gaming-appliance"
   ];
-  home-manager-custom.homeModuleFlags = [ "deck" "linux" ];
 
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = with pkgs.kdePackages;[
@@ -21,10 +15,6 @@
   ];
 
   jovian = {
-    devices.steamdeck.enable = true;
-    devices.steamdeck.autoUpdate = true;
-    devices.steamdeck.enableGyroDsuService = true;
-
     steam.enable = true;
     steam.autoStart = true;
     steam.user = "user";
@@ -35,3 +25,4 @@
     decky-loader.extraPythonPackages = p: with p;[ ];
   };
 }
+

@@ -1,5 +1,5 @@
 { config, pkgs, myModulesRoot, ... }:
-let defaultSpecialisationModules = [ ./gaming ]; in {
+let defaultSpecialisationModules = [./gaming ./gaming-experimental ]; in {
   # Default options - always active
   imports = [
     "${myModulesRoot}/nixos-baseline"
@@ -8,6 +8,10 @@ let defaultSpecialisationModules = [ ./gaming ]; in {
   ] ++ defaultSpecialisationModules;
 
   specialisation = {
+    gaming-fallback.configuration={...}:{
+      imports = [];
+      disabledModules = [./gaming-experimental];
+    };
     obs.configuration = { ... }: {
       imports = [ ./broadcast ];
       disabledModules = defaultSpecialisationModules;
