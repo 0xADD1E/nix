@@ -9,6 +9,8 @@
     firefox.url = "github:mozilla/nixpkgs-mozilla";
     nix-index-database.url = "github:nix-community/nix-index-database";
     jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
+    nixos-crostini.url = "github:aldur/nixos-crostini";
+
 
     # Only one nixpkgs
     nixos-vfio.inputs.nixpkgs.follows = "nixpkgs";
@@ -18,6 +20,7 @@
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     jovian-nixos.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-crostini.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs@{ self, nixpkgs, ... }:
     let
@@ -25,6 +28,7 @@
       hosts = [
         { hostname = "fluttershy"; system = "x86_64-linux"; kind = "homemanager"; }
         { hostname = "penguin"; system = "x86_64-linux"; kind = "homemanager"; }
+        { hostname = "baguette-nixos"; system = "x86_64-linux"; kind = "nixos"; }
         { hostname = "Nightmare-Moon"; system = "aarch64-darwin"; kind = "nixdarwin"; }
         { hostname = "Zephyr-Breeze"; system = "x86_64-linux"; kind = "nixos"; }
         { hostname = "Featherweight"; system = "x86_64-linux"; kind = "nixos"; }
