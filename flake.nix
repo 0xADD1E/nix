@@ -27,8 +27,7 @@
       specialArgs = { inherit inputs; myModulesRoot = ./modules; myOverlaysRoot = ./overlays; };
       hosts = [
         { hostname = "fluttershy"; system = "x86_64-linux"; kind = "homemanager"; }
-        { hostname = "penguin"; system = "x86_64-linux"; kind = "homemanager"; }
-        { hostname = "baguette-nixos"; system = "x86_64-linux"; kind = "nixos"; }
+        { hostname = "penguin"; system = "x86_64-linux"; kind = "nixos"; }
         { hostname = "Nightmare-Moon"; system = "aarch64-darwin"; kind = "nixdarwin"; }
         { hostname = "Zephyr-Breeze"; system = "x86_64-linux"; kind = "nixos"; }
         { hostname = "Featherweight"; system = "x86_64-linux"; kind = "nixos"; }
