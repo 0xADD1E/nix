@@ -16,7 +16,7 @@
       commands = [
         { command = "ALL"; options = [ "NOPASSWD" ]; }
       ];
-      groups = [ "wheel" ];
+      users = [ "kaja" ];
     }];
   };
 }
