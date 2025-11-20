@@ -8,4 +8,12 @@
       "${myModulesRoot}/nixos-baseline"
     ];
   home-manager-custom.homeModuleFlags = [ "linux" ];
+  security.sudo = {
+    extraRules = [{
+      commands = [
+        { command = "ALL"; options = [ "NOPASSWD" ]; }
+      ];
+      groups = [ "wheel" ];
+    }];
+  };
 }
