@@ -1,7 +1,7 @@
-{ config, inputs, pkgs, myModulesRoot, ... }:
+{ config, lib, inputs, pkgs, myModulesRoot, ... }:
 
 {
-  networking.hostName = "penguin";
+  networking.hostName = lib.mkForce "penguin";
   imports =
     [
       inputs.nixos-crostini.nixosModules.baguette
