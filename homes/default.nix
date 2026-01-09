@@ -17,7 +17,7 @@ let
         usernames);
 in
 {
-  moduleSetup = { lib, inputs, kind, ... }: ({
+  moduleSetup = { lib, inputs, kind, config, ... }: ({
     # Setup a couple options to allow us to configure our multi-user/multi-device home-manager configuration more ergonomically
     options = {
       home-manager-custom = {
