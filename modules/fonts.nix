@@ -12,6 +12,6 @@
   nerd-fonts.fira-code
   open-dyslexic
   corefonts
-  vistafonts
+  vista-fonts
   ubuntu_font_family
 ])
