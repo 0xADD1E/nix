@@ -1,15 +1,16 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.11";
     nixos-vfio.url = "github:j-brn/nixos-vfio";
-    nix-darwin.url = "github:LnL7/nix-darwin/master";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
     nixgl.url = "github:nix-community/nixGL";
     rust-overlay.url = "github:oxalica/rust-overlay";
     firefox.url = "github:mozilla/nixpkgs-mozilla";
     nix-index-database.url = "github:nix-community/nix-index-database";
     jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
     nixos-crostini.url = "github:aldur/nixos-crostini";
+    nixos-apple-silicon.url = "github:nix-community/nixos-apple-silicon";
 
 
     # Only one nixpkgs
@@ -21,6 +22,7 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     jovian-nixos.inputs.nixpkgs.follows = "nixpkgs";
     nixos-crostini.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-apple-silicon.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs@{ self, nixpkgs, ... }:
     let
@@ -30,7 +32,7 @@
         { hostname = "penguin"; system = "x86_64-linux"; kind = "nixos"; }
         { hostname = "Nightmare-Moon"; system = "aarch64-darwin"; kind = "nixdarwin"; }
         { hostname = "Zephyr-Breeze"; system = "x86_64-linux"; kind = "nixos"; }
-        { hostname = "Featherweight"; system = "x86_64-linux"; kind = "nixos"; }
+        { hostname = "Braeburn"; system = "aarch64-linux"; kind = "nixos"; }
         { hostname = "pizza-box"; system = "x86_64-linux"; kind = "nixos"; }
       ];
       hostsByKind = builtins.groupBy (h: h.kind) hosts;

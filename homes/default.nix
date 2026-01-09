@@ -1,12 +1,10 @@
 let
   # Import all user descriptions (subdirectories of this)
   # Must expose description, extraGroups, and homeModule
-  usersAttrs =
-    let
       usersDir = (builtins.readDir ./.);
       filenames = builtins.attrNames usersDir;
       toRegister = builtins.filter (f: (f != "default.nix")) filenames;
-      userDescriptions = builtins.map
+      userAttrs = usernames: builtins.listToAttrs (builtins.map
         (f:
           let
             m = import (./. + "/${f}") { };
@@ -16,9 +14,7 @@ let
             value = { inherit (m) description extraGroups homeModule; };
           }
         )
-        toRegister;
-    in
-    builtins.listToAttrs userDescriptions;
+        usernames);
 in
 {
   moduleSetup = { lib, inputs, kind, ... }: ({
@@ -37,6 +33,12 @@ in
           example = "[\"desktop\" \"laptop\"]";
           description = "Relatively free-form flags that your home module can use to pick up device-specific features";
         };
+        enabledUsers = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
+          default = toRegister;
+          example = "[\"kaja\"]";
+          description "Which user modules to enable";
+        };
       };
     };
   } // (
@@ -51,7 +53,7 @@ in
             inherit (attrs) description extraGroups;
             isNormalUser = true;
           })
-          usersAttrs;
+          (usersAttrs config.home-manager-custom.enabledUsers);
       };
     } else if kind == "nixdarwin" then {
       imports = [ inputs.home-manager.darwinModules.home-manager ];
@@ -75,7 +77,7 @@ in
           home.sessionVariables.NIX_PATH = (lib.concatStringsSep ":" config.nix.nixPath);
           imports = [ attrs.homeModule ];
         })
-        usersAttrs;
+        (usersAttrs config.home-manager-custom.enabledUsers);
     };
   };
 }
