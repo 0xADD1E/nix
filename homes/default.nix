@@ -37,7 +37,7 @@ in
           type = lib.types.listOf lib.types.str;
           default = toRegister;
           example = "[\"kaja\"]";
-          description "Which user modules to enable";
+          description = "Which user modules to enable";
         };
       };
     };
