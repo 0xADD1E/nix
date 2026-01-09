@@ -13,5 +13,5 @@
   open-dyslexic
   corefonts
   vista-fonts
-  ubuntu_font_family
+  ubuntu-classic
 ])
