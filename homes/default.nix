@@ -1,20 +1,20 @@
 let
   # Import all user descriptions (subdirectories of this)
   # Must expose description, extraGroups, and homeModule
-      usersDir = (builtins.readDir ./.);
-      filenames = builtins.attrNames usersDir;
-      toRegister = builtins.filter (f: (f != "default.nix")) filenames;
-      usersAttrs = usernames: builtins.listToAttrs (builtins.map
-        (f:
-          let
-            m = import (./. + "/${f}") { };
-          in
-          {
-            name = f;
-            value = { inherit (m) description extraGroups homeModule; };
-          }
-        )
-        usernames);
+  usersDir = (builtins.readDir ./.);
+  filenames = builtins.attrNames usersDir;
+  toRegister = builtins.filter (f: (f != "default.nix")) filenames;
+  usersAttrs = usernames: builtins.listToAttrs (builtins.map
+    (f:
+      let
+        m = import (./. + "/${f}") { };
+      in
+      {
+        name = f;
+        value = { inherit (m) description extraGroups homeModule; };
+      }
+    )
+    usernames);
 in
 {
   moduleSetup = { lib, inputs, kind, config, ... }: ({

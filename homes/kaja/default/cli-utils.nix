@@ -27,6 +27,7 @@
 
   programs.bat.enable = true;
   programs.eza.enable = true;
+  programs.difftastic.enable = true;
   home.shellAliases = {
     cat = "bat";
     ls = "eza";

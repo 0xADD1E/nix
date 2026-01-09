@@ -9,7 +9,7 @@
     ];
   home-manager-custom.homeModuleFlags = [ "linux" ];
   environment.variables = {
-    NIX_REMOTE="daemon";
+    NIX_REMOTE = "daemon";
   };
   security.sudo = {
     extraRules = [{

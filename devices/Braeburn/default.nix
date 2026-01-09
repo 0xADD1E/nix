@@ -10,16 +10,16 @@
 
   # Asahi Quirks & Firmware
   hardware.asahi.peripheralFirmwareDirectory = ./firmware;
-  boot.loader.efi.canTouchEfiVariables=false;
+  boot.loader.efi.canTouchEfiVariables = false;
   networking.wireless.iwd = {
-    enable=true;
-    settings.General.EnableNetworkConfiguration=true;
+    enable = true;
+    settings.General.EnableNetworkConfiguration = true;
   };
 
   networking.hostName = "braeburn"; # Define your hostname.
   home-manager-custom = {
     homeModuleFlags = [ "linux" ];
-    enabledUsers = ["kaja"];
+    enabledUsers = [ "kaja" ];
   };
 }
 
