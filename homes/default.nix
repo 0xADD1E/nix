@@ -4,7 +4,7 @@ let
       usersDir = (builtins.readDir ./.);
       filenames = builtins.attrNames usersDir;
       toRegister = builtins.filter (f: (f != "default.nix")) filenames;
-      userAttrs = usernames: builtins.listToAttrs (builtins.map
+      usersAttrs = usernames: builtins.listToAttrs (builtins.map
         (f:
           let
             m = import (./. + "/${f}") { };
