@@ -10,7 +10,7 @@
       d.en-computers
     ]))
     curlFull
-    du-dust
+    dust
     hyperfine
     mosh
     nmap
