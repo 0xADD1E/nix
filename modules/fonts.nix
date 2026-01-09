@@ -3,7 +3,7 @@
   noto-fonts
   noto-fonts-cjk-sans
   noto-fonts-lgc-plus
-  noto-fonts-emoji
+  noto-fonts-color-emoji
   noto-fonts-emoji-blob-bin
   liberation_ttf
   fira-code
