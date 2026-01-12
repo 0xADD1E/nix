@@ -23,6 +23,7 @@ config.font = wezterm.font_with_fallback {'Fira Code Nerd Font', 'Fira Code'}
 config.font_size = 11.0
 config.color_scheme = light_dark('One Light (base16)', 'OneDark (base16)')
 
+config.enable_kitty_keyboard = true;
 config.mouse_bindings = {
 	-- Left click shouldn't open hyperlinks
 	{event={Up={streak=1, button="Left"}}, mods="NONE", action=act.CompleteSelection 'PrimarySelection'},

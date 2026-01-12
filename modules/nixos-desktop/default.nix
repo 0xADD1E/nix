@@ -41,8 +41,7 @@
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
-    #polkitPolicyOwners=[];
-    #TODO
+    polkitPolicyOwners = config.home-manager-custom.enabledUsers;
   };
   services.tailscale = {
     enable = true;

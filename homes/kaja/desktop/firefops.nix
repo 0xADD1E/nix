@@ -58,14 +58,18 @@
         "ff2mpv@yossarian.net" = moz "ff2mpv";
         "plasma-browser-integration@kde.org" = moz "plasma-integration";
         "@react-devtools" = moz "react-devtools";
-        "{3c078156-979c-498b-8990-85f7987dd929}" = moz "sideberry";
+        "{3c078156-979c-498b-8990-85f7987dd929}" = moz "sidebery";
         "{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}" = moz "user-agent-string-switcher";
         "arc-dark-theme@afnankhan" = moz "arc-dark-theme-we";
       };
     };
 
     profiles.default = {
-      #containers = {}; # maybe later
+      settings = {
+        "browser.startup.page" = 3;
+        #TODO: More
+      };
+      #containers = {}; #TODO:
       extensions = {
         force = true;
         settings = {

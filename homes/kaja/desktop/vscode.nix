@@ -40,8 +40,11 @@
             "path" = "pwsh";
             "icon" = "terminal-powershell";
           };
+          "nu" = {
+            "path" = "nu";
+          };
         };
-        "terminal.integrated.defaultProfile.linux" = "fish";
+        "terminal.integrated.defaultProfile.linux" = "nu";
         # Kubernetes
         "vscode-kubernetes.kubectl-path" = "${pkgs.kubectl}/bin/kubectl";
         "vs-kubernetes" = {

@@ -8,8 +8,22 @@
     '';
   };
 
-  programs.ion.enable = true;
-  programs.nushell.enable = true;
+  programs.nushell = {
+    enable = true;
+    settings = {
+      show_banner = false;
+      use_kitty_protocol = true;
+      table.mode = "markdown";
+    };
+    plugins = with pkgs.nushellPlugins;[
+      formats
+      desktop_notifications
+      gstat
+      highlight
+      polars
+      query
+    ];
+  };
 
 
   programs.fzf.enable = true;
