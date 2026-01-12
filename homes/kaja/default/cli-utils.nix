@@ -29,8 +29,8 @@
   programs.eza.enable = true;
   programs.difftastic.enable = true;
   home.shellAliases = {
-    cat = "bat";
-    ls = "eza";
+    #cat = "bat";
+    #ls = "eza";
     qr = "${lib.getExe pkgs.qrencode} -t UTF8";
   };
 

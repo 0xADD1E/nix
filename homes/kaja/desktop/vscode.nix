@@ -11,6 +11,7 @@
         "extensions.autoUpdate" = false;
         "update.mode" = "none";
         # Colours and Interface
+        "window.titleBarStyle" = "custom";
         "window.autoDetectColorScheme" = true;
         "workbench.preferredDarkColorTheme" = "One Dark Pro";
         "workbench.preferredLightColorTheme" = "Atom One Light";
@@ -77,7 +78,7 @@
           jebbs.plantuml
           pkgs.vscode-extensions."4ops".terraform
           mechatroner.rainbow-csv
-          redhat.vscode-xml
+          #redhat.vscode-xml
 
           vscodevim.vim
 

@@ -8,18 +8,21 @@
     ./hardware-configuration.nix
   ];
 
-  # Asahi Quirks & Firmware
+  networking.hostName = "Braeburn"; # Define your hostname.
+  home-manager-custom = {
+    homeModuleFlags = [ "linux" "desktop" ];
+    enabledUsers = [ "kaja" ];
+  };
+
+  # Asahi Quirks & Features
+  services.fprintd.enable = false; #touch id machine broke
+  boot.kernelParams = [ "apple_dcp.show_notch=1" ];
+  # Asahi Firmware
   hardware.asahi.peripheralFirmwareDirectory = ./firmware;
   boot.loader.efi.canTouchEfiVariables = false;
   networking.wireless.iwd = {
     enable = true;
     settings.General.EnableNetworkConfiguration = true;
-  };
-
-  networking.hostName = "braeburn"; # Define your hostname.
-  home-manager-custom = {
-    homeModuleFlags = [ "linux" ];
-    enabledUsers = [ "kaja" ];
   };
 }
 

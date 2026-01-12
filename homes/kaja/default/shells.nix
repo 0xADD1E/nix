@@ -8,6 +8,9 @@
     '';
   };
 
+  programs.ion.enable = true;
+  programs.nushell.enable = true;
+
 
   programs.fzf.enable = true;
   programs.starship = {
