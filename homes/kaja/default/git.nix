@@ -13,6 +13,7 @@
         lg = "log --pretty=oneline --graph --abbrev-commit --all";
         cln = "clean --exclude='*.env' --exclude='.env' -dx";
         fetchall = "fetch --all --tags --prune --prune-tags";
+        outahere = "!systemctl poweroff";
       };
       fetch.parallel = 0;
       pull.rebase = true;
