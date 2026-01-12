@@ -13,13 +13,12 @@
         lg = "log --pretty=oneline --graph --abbrev-commit --all";
         cln = "clean --exclude='*.env' --exclude='.env' -dx";
         fetchall = "fetch --all --tags --prune --prune-tags";
-
-        fetch.parallel = 0;
-        pull.rebase = true;
-        push.default = "current";
-        init.defaultBranch = "main";
-        merge.ff = "only";
       };
+      fetch.parallel = 0;
+      pull.rebase = true;
+      push.default = "current";
+      init.defaultBranch = "main";
+      merge.ff = "only";
     };
     includes = [
       {
