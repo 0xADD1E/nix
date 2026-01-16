@@ -20,7 +20,7 @@
   # Asahi Quirks & Features
   boot.kernelPackages = lib.mkForce (pkgs.callPackage ./kernel.nix { });
   services.fprintd.enable = false; #touch id machine broke
-  boot.kernelParams = [ "apple_dcp.show_notch=1" ];
+  boot.kernelParams = [ "appledrm.show_notch=1" ]; #formerly known as apple_dcp.show_notch
   # Asahi Firmware
   hardware.asahi.peripheralFirmwareDirectory = ./firmware;
   boot.loader.efi.canTouchEfiVariables = false;
