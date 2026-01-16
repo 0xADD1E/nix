@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, myModulesRoot, ... }:
+{ config, inputs, lib, pkgs, myModulesRoot, ... }:
 {
   # Default options - always active
   imports = [
@@ -15,6 +15,7 @@
   };
 
   # Asahi Quirks & Features
+  boot.kernelPackages = lib.mkForce (pkgs.callPackage ./kernel.nix { });
   services.fprintd.enable = false; #touch id machine broke
   boot.kernelParams = [ "apple_dcp.show_notch=1" ];
   # Asahi Firmware
