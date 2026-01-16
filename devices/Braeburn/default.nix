@@ -14,6 +14,9 @@
     enabledUsers = [ "kaja" ];
   };
 
+  boot.plymouth.theme = "connect";
+  boot.plymouth.themePackages = [ ((pkgs.adi1090x-plymouth-themes.override { selected_themes = [ "connect" ]; }).overrideAttrs { patches = [ ./patch.diff ]; }) ];
+
   # Asahi Quirks & Features
   boot.kernelPackages = lib.mkForce (pkgs.callPackage ./kernel.nix { });
   services.fprintd.enable = false; #touch id machine broke
