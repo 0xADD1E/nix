@@ -1,5 +1,5 @@
 { ... }: {
-  programs.difftastic.git.enable = true;
+  programs.difftastic.git.enable = false; #TODO: jemalloc broke
   programs.git = {
     enable = true;
     lfs.enable = true;
