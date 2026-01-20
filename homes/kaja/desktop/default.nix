@@ -6,8 +6,8 @@
     neovide
     unstablePkgs.signal-desktop
     telegram-desktop
-    #slack
-    #google-chrome
+    #unstablePkgs.slack
+    chromium
     seafile-client
   ];
   programs.element-desktop.enable = true;
