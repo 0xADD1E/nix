@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    unstablePkgs.url = "github:NixOS/nixpkgs/master";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.11";
     nixos-vfio.url = "github:j-brn/nixos-vfio";
@@ -58,7 +59,7 @@
           value = nixpkgs.lib.nixosSystem {
             inherit system;
             pkgs = import nixpkgs (nixCfg system);
-            specialArgs = specialArgs // { inherit kind; };
+            specialArgs = specialArgs // { inherit kind; unstablePkgs = import inputs.unstablePkgs (nixCfg system); };
             modules = [
               (import ./homes).moduleSetup
               "${./devices}/${hostname}"
@@ -73,7 +74,7 @@
           name = "kaja@${hostname}";
           value = inputs.home-manager.lib.homeManagerConfiguration {
             pkgs = import nixpkgs (nixCfg system);
-            extraSpecialArgs = specialArgs // { inherit kind; osConfig.home-manager-custom.homeModuleFlags = [ "standalone" ]; };
+            extraSpecialArgs = specialArgs // { inherit kind; unstablePkgs = import inputs.unstablePkgs (nixCfg system); osConfig.home-manager-custom.homeModuleFlags = [ "standalone" ]; };
             modules = [ "${./devices}/${hostname}" ];
           };
         };
@@ -85,7 +86,7 @@
           value = inputs.nix-darwin.lib.darwinSystem {
             inherit system;
             pkgs = import nixpkgs (nixCfg system);
-            specialArgs = specialArgs // { inherit kind; };
+            specialArgs = specialArgs // { inherit kind; unstablePkgs = import inputs.unstablePkgs (nixCfg system); };
             modules = [
               (import ./homes).moduleSetup
               "${./devices}/${hostname}"
