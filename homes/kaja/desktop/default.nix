@@ -4,11 +4,12 @@
   home.packages = with pkgs;[
     openscad
     neovide
-    unstablePkgs.signal-desktop
+    unstablePkgs.signal-desktop # Requires regular updates
     telegram-desktop
-    #unstablePkgs.slack
+    #slacky
     chromium
     seafile-client
+    kdenlive-plugin-compatible
   ];
   programs.element-desktop.enable = true;
   programs.mpv.enable = true;
