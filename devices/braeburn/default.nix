@@ -6,9 +6,10 @@
     "${myModulesRoot}/nixos-baseline"
     "${myModulesRoot}/nixos-laptop"
     ./hardware-configuration.nix
+    ./muvm-fex.nix
   ];
 
-  networking.hostName = "Braeburn"; # Define your hostname.
+  networking.hostName = "braeburn"; # Define your hostname.
   home-manager-custom = {
     homeModuleFlags = [ "linux" "desktop" ];
     enabledUsers = [ "kaja" ];

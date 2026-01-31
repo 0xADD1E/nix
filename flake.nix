@@ -12,6 +12,7 @@
     jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
     nixos-crostini.url = "github:aldur/nixos-crostini";
     nixos-apple-silicon.url = "github:nix-community/nixos-apple-silicon";
+    nixos-muvm-fex.url = "github:nrabulinski/nixos-muvm-fex";
 
 
     # Only one nixpkgs
@@ -24,6 +25,8 @@
     jovian-nixos.inputs.nixpkgs.follows = "nixpkgs";
     nixos-crostini.inputs.nixpkgs.follows = "nixpkgs";
     nixos-apple-silicon.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-muvm-fex.inputs.nixos-apple-silicon.follows = "nixos-apple-silicon";
+    nixos-muvm-fex.inputs.nixpkgs.follows = "unstablePkgs";
   };
   outputs = inputs@{ self, nixpkgs, ... }:
     let
@@ -33,7 +36,7 @@
         { hostname = "penguin"; system = "x86_64-linux"; kind = "nixos"; }
         { hostname = "Nightmare-Moon"; system = "aarch64-darwin"; kind = "nixdarwin"; }
         { hostname = "Zephyr-Breeze"; system = "x86_64-linux"; kind = "nixos"; }
-        { hostname = "Braeburn"; system = "aarch64-linux"; kind = "nixos"; }
+        { hostname = "braeburn"; system = "aarch64-linux"; kind = "nixos"; }
         { hostname = "pizza-box"; system = "x86_64-linux"; kind = "nixos"; }
       ];
       hostsByKind = builtins.groupBy (h: h.kind) hosts;
@@ -59,7 +62,7 @@
           value = nixpkgs.lib.nixosSystem {
             inherit system;
             pkgs = import nixpkgs (nixCfg system);
-            specialArgs = specialArgs // { inherit kind; unstablePkgs = import inputs.unstablePkgs (nixCfg system); };
+            specialArgs = specialArgs // { inherit kind; x86Pkgs = import nixpkgs (nixCfg "x86_64-linux");unstablePkgs = import inputs.unstablePkgs (nixCfg system); };
             modules = [
               (import ./homes).moduleSetup
               "${./devices}/${hostname}"
@@ -74,7 +77,7 @@
           name = "kaja@${hostname}";
           value = inputs.home-manager.lib.homeManagerConfiguration {
             pkgs = import nixpkgs (nixCfg system);
-            extraSpecialArgs = specialArgs // { inherit kind; unstablePkgs = import inputs.unstablePkgs (nixCfg system); osConfig.home-manager-custom.homeModuleFlags = [ "standalone" ]; };
+            extraSpecialArgs = specialArgs // { inherit kind; x86Pkgs = import nixpkgs (nixCfg "x86_64-linux"); unstablePkgs = import inputs.unstablePkgs (nixCfg system); osConfig.home-manager-custom.homeModuleFlags = [ "standalone" ]; };
             modules = [ "${./devices}/${hostname}" ];
           };
         };

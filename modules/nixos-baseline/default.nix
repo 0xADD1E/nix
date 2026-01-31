@@ -17,7 +17,7 @@
   # Time and locale and stuff
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_IE.UTF-8";
-  i18n.extraLocales = ["en_GB.UTF-8/UTF-8"];
+  i18n.extraLocales = [ "en_GB.UTF-8/UTF-8" ];
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_GB.UTF-8";
     LC_MONETARY = "en_GB.UTF-8";
@@ -39,6 +39,7 @@
     "nixpkgs=${inputs.nixpkgs}"
     "nixpkgs-overlays=${myOverlaysRoot}"
   ];
+  nix.settings.trusted-users = config.home-manager-custom.enabledUsers;
 
   # The Essentials
   programs.neovim.enable = true;
