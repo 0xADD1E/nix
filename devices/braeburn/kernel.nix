@@ -17,8 +17,8 @@ let
       inherit stdenv lib;
 
       pname = "linux-asahi";
-      version = "6.18.5-fairydust20260116";
-      modDirVersion = "6.18.5";
+      version = "6.18.10-fairydust20260217";
+      modDirVersion = "6.18.10";
       extraMeta.branch = "6.18";
 
       src = fetchFromGitHub {
@@ -26,8 +26,8 @@ let
         repo = "linux";
         # Current tip of branch fairydust https://github.com/AsahiLinux/linux/commits/fairydust/
         # Note for browsing: MBA M2 13in is t8112-j413
-        rev = "fada65930a9b429d646eb2f384deb61896233284";
-        hash = "sha256-Fs20sODkF4bsChqn0nHisei1ddXH99DgdHqogZSPvsI=";
+        rev = "61b6e714dd19b7bee1c0e6ec4234199e640c2932";
+        hash = "sha256-5eAgJTKcRdjEFzHDSrh/XReaT6Db9YN2RN1SwOs28NE=";
       };
 
       kernelPatches = [
