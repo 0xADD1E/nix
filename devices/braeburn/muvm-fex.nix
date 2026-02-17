@@ -17,7 +17,13 @@ let
   '';
 }; in
 {
-  virtualisation.waydroid.enable=true;
+
+  networking.nftables.enable=true;
+  # Waydroid won't work until they support android 15 / 16k page size
+  virtualisation.waydroid={
+    enable=false;
+    package=unstablePkgs.waydroid-nftables;
+  };
   virtualisation.libvirtd.enable=true;
   programs.virt-manager.enable=true;
   environment.systemPackages = [ unstablePkgs.muvm mu-run x86Pkgs.mesa-demos ];
