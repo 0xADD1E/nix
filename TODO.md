@@ -1,6 +1,6 @@
 # TODO
 - modules/nixos-desktop/kwin-system76-scheduler
-- https://github.com/brizzbuzz/opnix
+- Cleanup handing of 1Password
 
 
 ## Nix-community things to add

@@ -1,10 +1,11 @@
 { config, pkgs, unstablePkgs, ... }:
 {
-  imports = [ ./firefops.nix ./fonts.nix ./vscode.nix ./wezterm ];
+  imports = [ ./backups.nix ./firefops.nix ./fonts.nix ./vscode.nix ./wezterm ];
   home.packages = with pkgs;[
     openscad
     neovide
     unstablePkgs.signal-desktop # Requires regular updates
+    unstablePkgs.yt-dlp
     telegram-desktop
     #slacky
     chromium

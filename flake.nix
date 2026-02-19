@@ -13,6 +13,7 @@
     nixos-crostini.url = "github:aldur/nixos-crostini";
     nixos-apple-silicon.url = "github:nix-community/nixos-apple-silicon";
     nixos-muvm-fex.url = "github:nrabulinski/nixos-muvm-fex";
+    opnix.url = "github:brizzbuzz/opnix";
 
 
     # Only one nixpkgs
@@ -27,6 +28,7 @@
     nixos-apple-silicon.inputs.nixpkgs.follows = "nixpkgs";
     nixos-muvm-fex.inputs.nixos-apple-silicon.follows = "nixos-apple-silicon";
     nixos-muvm-fex.inputs.nixpkgs.follows = "unstablePkgs";
+    opnix.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs@{ self, nixpkgs, ... }:
     let
@@ -62,9 +64,10 @@
           value = nixpkgs.lib.nixosSystem {
             inherit system;
             pkgs = import nixpkgs (nixCfg system);
-            specialArgs = specialArgs // { inherit kind; x86Pkgs = import nixpkgs (nixCfg "x86_64-linux");unstablePkgs = import inputs.unstablePkgs (nixCfg system); };
+            specialArgs = specialArgs // { inherit kind; x86Pkgs = import nixpkgs (nixCfg "x86_64-linux"); unstablePkgs = import inputs.unstablePkgs (nixCfg system); };
             modules = [
               (import ./homes).moduleSetup
+              inputs.opnix.nixosModules.default
               "${./devices}/${hostname}"
               (import ./homes).homeSetup
             ];
@@ -78,7 +81,10 @@
           value = inputs.home-manager.lib.homeManagerConfiguration {
             pkgs = import nixpkgs (nixCfg system);
             extraSpecialArgs = specialArgs // { inherit kind; x86Pkgs = import nixpkgs (nixCfg "x86_64-linux"); unstablePkgs = import inputs.unstablePkgs (nixCfg system); osConfig.home-manager-custom.homeModuleFlags = [ "standalone" ]; };
-            modules = [ "${./devices}/${hostname}" ];
+            modules = [
+              inputs.opnix.homeManagerModules.default
+              "${./devices}/${hostname}"
+            ];
           };
         };
       };
@@ -92,6 +98,7 @@
             specialArgs = specialArgs // { inherit kind; unstablePkgs = import inputs.unstablePkgs (nixCfg system); };
             modules = [
               (import ./homes).moduleSetup
+              inputs.opnix.darwinModules.default
               "${./devices}/${hostname}"
               (import ./homes).homeSetup
             ];
