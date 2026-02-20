@@ -71,7 +71,6 @@
         Description = "Run kopia backups";
         Wants = "network-online.target";
         After = "network-online.target";
-        ConditionACPower = true;
       };
       Service = {
         Type = "oneshot";
@@ -79,7 +78,20 @@
         CPUSchedulingPolicy = "batch";
         IOSchedulingPriority = 7;
         PrivateTmp = true;
-        ExecStart = "${pkgs.kopia}/bin/kopia snapshot create --all";
+        ExecStart = lib.getExe (pkgs.writeShellApplication {
+          name = "run-kopia-backup";
+          runtimeInputs = [ pkgs.kopia pkgs.systemd pkgs.networkmanager ];
+          text = ''
+            # https://github.com/systemd/systemd/issues/39523 would be a much nicer way of handling this
+            while (! systemd-ac-power) || [[ "$(nmcli networking connectivity)" != 'full' ]]; do
+              echo "Waiting to backup"
+              systemd-ac-power && echo 'Power: True' || echo 'Power: False'
+              echo "Networking: $(nmcli networking connectivity)"
+              sleep 30
+            done
+            kopia snapshot create --all
+          '';
+        });
       };
     };
     timers.kopia = {
