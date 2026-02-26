@@ -38,6 +38,11 @@
     publish.addresses = true;
   };
 
+  services.earlyoom = {
+    enable = true;
+    freeMemThreshold = 5;
+  };
+
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
