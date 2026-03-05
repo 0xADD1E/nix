@@ -1,6 +1,6 @@
 {}: {
   description = "Karolina Liskova";
-  extraGroups = [ "networkmanager" "wheel" "docker" "libvirt" ];
+  extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
   homeModule = { lib, config, osConfig, ... }:
     let
       allFlags = osConfig.home-manager-custom.homeModuleFlags;
