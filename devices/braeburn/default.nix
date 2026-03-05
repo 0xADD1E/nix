@@ -11,7 +11,7 @@
 
   networking.hostName = "braeburn"; # Define your hostname.
   home-manager-custom = {
-    homeModuleFlags = [ "linux" "desktop" ];
+    homeModuleFlags = [ "linux" "desktop" "work" ];
     enabledUsers = [ "kaja" ];
   };
 
