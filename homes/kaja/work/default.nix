@@ -5,6 +5,6 @@
     {
       "x86_64-linux" = [ pkgs.slack ];
       "aarch64-linux" = [ pkgs.slacky ];
-    }."${pkgs.hostPlatform.system}"
+    }."${pkgs.stdenv.hostPlatform.system}"
   );
 }

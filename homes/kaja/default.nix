@@ -3,10 +3,16 @@
   extraGroups = [ "networkmanager" "wheel" "docker" "libvirt" ];
   homeModule = { lib, config, osConfig, ... }:
     let
-      ifFlag = flagName: modulePath: (lib.optional (builtins.elem flagName osConfig.home-manager-custom.homeModuleFlags) modulePath);
+      allFlags = osConfig.home-manager-custom.homeModuleFlags;
+      modules = {
+        desktop = ./desktop;
+        linux = ./linux;
+        deck = ./deck;
+        work = ./work;
+      };
     in
     {
       home.stateVersion = "25.05";
-      imports = [ ./default ] ++ (ifFlag "desktop" ./desktop) ++ (ifFlag "linux" ./linux) ++ (ifFlag "deck" ./deck);
+      imports = [ ./default ] ++ (builtins.map (flag: modules."${flag}") allFlags);
     };
 }
