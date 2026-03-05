@@ -34,7 +34,7 @@
     let
       specialArgs = { inherit inputs; myModulesRoot = ./modules; myOverlaysRoot = ./overlays; };
       hosts = [
-        { hostname = "fluttershy"; system = "x86_64-linux"; kind = "homemanager"; }
+        { hostname = "fluttershy"; system = "x86_64-linux"; kind = "nixos"; }
         { hostname = "penguin"; system = "x86_64-linux"; kind = "nixos"; }
         { hostname = "Nightmare-Moon"; system = "aarch64-darwin"; kind = "nixdarwin"; }
         { hostname = "Zephyr-Breeze"; system = "x86_64-linux"; kind = "nixos"; }
@@ -64,7 +64,7 @@
           value = nixpkgs.lib.nixosSystem {
             inherit system;
             pkgs = import nixpkgs (nixCfg system);
-            specialArgs = specialArgs // { inherit kind; x86Pkgs = import nixpkgs (nixCfg "x86_64-linux"); unstablePkgs = import inputs.unstablePkgs (nixCfg system); };
+            specialArgs = specialArgs // { inherit system kind hostname; x86Pkgs = import nixpkgs (nixCfg "x86_64-linux"); unstablePkgs = import inputs.unstablePkgs (nixCfg system); };
             modules = [
               (import ./homes).moduleSetup
               inputs.opnix.nixosModules.default
@@ -80,7 +80,7 @@
           name = "kaja@${hostname}";
           value = inputs.home-manager.lib.homeManagerConfiguration {
             pkgs = import nixpkgs (nixCfg system);
-            extraSpecialArgs = specialArgs // { inherit kind; x86Pkgs = import nixpkgs (nixCfg "x86_64-linux"); unstablePkgs = import inputs.unstablePkgs (nixCfg system); osConfig.home-manager-custom.homeModuleFlags = [ "standalone" ]; };
+            extraSpecialArgs = specialArgs // { inherit system kind hostname; x86Pkgs = import nixpkgs (nixCfg "x86_64-linux"); unstablePkgs = import inputs.unstablePkgs (nixCfg system); osConfig.home-manager-custom.homeModuleFlags = [ "standalone" ]; };
             modules = [
               inputs.opnix.homeManagerModules.default
               "${./devices}/${hostname}"
@@ -95,7 +95,7 @@
           value = inputs.nix-darwin.lib.darwinSystem {
             inherit system;
             pkgs = import nixpkgs (nixCfg system);
-            specialArgs = specialArgs // { inherit kind; unstablePkgs = import inputs.unstablePkgs (nixCfg system); };
+            specialArgs = specialArgs // { inherit system kind hostname; unstablePkgs = import inputs.unstablePkgs (nixCfg system); };
             modules = [
               (import ./homes).moduleSetup
               inputs.opnix.darwinModules.default

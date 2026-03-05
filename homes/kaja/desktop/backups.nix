@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, hostname, ... }:
 {
   imports = [ inputs.opnix.homeManagerModules.default ];
   programs.onepassword-secrets = {
@@ -42,7 +42,7 @@
     };
   };
   home.file.".config/kopia/repository.config".text = builtins.toJSON {
-    hostname = "braeburn";
+    hostname = hostname;
     username = "kaja";
     description = "My repository";
     enableActions = false;
