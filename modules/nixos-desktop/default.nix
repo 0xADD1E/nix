@@ -1,5 +1,8 @@
 { lib, config, pkgs, myModulesRoot, ... }: {
-  imports = [ "${myModulesRoot}/nixos-metal" ];
+  imports = [
+    "${myModulesRoot}/nixos-metal"
+    ./libvirt.nix
+  ];
 
   # Graphical Things
   services.xserver.enable = true;
@@ -69,22 +72,6 @@
     #TODO: Extra modules like https://fictionbecomesfact.com/notes/cockpit-machines-nixos-setup/ ?
   };
 
-  virtualisation.spiceUSBRedirection.enable = true;
-  environment.systemPackages = with pkgs; [
-    virtiofsd
-  ];
-
-  # VMM Bits
-  programs.virt-manager.enable = true;
-  virtualisation.libvirtd = {
-    enable = true;
-    onBoot = "ignore";
-    onShutdown = "shutdown";
-    qemu = {
-      runAsRoot = false;
-      swtpm.enable = true;
-    };
-  };
   virtualisation.docker = {
     enable = true;
     storageDriver = "btrfs";
