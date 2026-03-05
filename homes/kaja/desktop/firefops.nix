@@ -86,7 +86,7 @@
         alchemy-old = {
           name = "Alchemy-Old";
           color = "orange";
-          icon = "briefcase";
+          icon = "circle";
           id = 3;
         };
         xoala = {
@@ -95,10 +95,16 @@
           icon = "circle";
           id = 4;
         };
+        xoala-admin = {
+          name = "Xoala-Admin";
+          color = "blue";
+          icon = "circle";
+          id = 7;
+        };
         artos = {
           name = "Artos";
           color = "blue";
-          icon = "briefcase";
+          icon = "circle";
           id = 5;
         };
         prompt = {
