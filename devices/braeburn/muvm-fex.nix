@@ -1,5 +1,5 @@
-{lib, pkgs, unstablePkgs, x86Pkgs, inputs, ... }:
-let 
+{ lib, pkgs, unstablePkgs, x86Pkgs, inputs, ... }:
+let
   #    ln -s ${lib.getExe x86Pkgs.steam-run-free} /run/steam-run-free
   initScript = pkgs.writeShellScript "muvm-steam-init.sh" ''
     ln -snf ${x86Pkgs.mesa} /run/opengl-driver
@@ -10,21 +10,22 @@ let
     #echo "  PULSE_CLIENTCONFIG=/run/pulse.conf /run/steam-run-free /path/to/steam"
     #echo
   '';
-  mu-run = pkgs.writeShellApplication{
-  name="mu-run";
-  text=''
-    ${lib.getExe unstablePkgs.muvm} -x ${initScript} "$@"
-  '';
-}; in
+  mu-run = pkgs.writeShellApplication {
+    name = "mu-run";
+    text = ''
+      ${lib.getExe unstablePkgs.muvm} -x ${initScript} "$@"
+    '';
+  };
+in
 {
 
-  networking.nftables.enable=true;
+  networking.nftables.enable = true;
   # Waydroid won't work until they support android 15 / 16k page size
-  virtualisation.waydroid={
-    enable=false;
-    package=unstablePkgs.waydroid-nftables;
+  virtualisation.waydroid = {
+    enable = false;
+    package = unstablePkgs.waydroid-nftables;
   };
-  virtualisation.libvirtd.enable=true;
-  programs.virt-manager.enable=true;
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
   environment.systemPackages = [ unstablePkgs.muvm mu-run x86Pkgs.mesa-demos ];
 }
