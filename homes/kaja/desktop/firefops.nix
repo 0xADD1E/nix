@@ -69,7 +69,45 @@
         "browser.startup.page" = 3;
         #TODO: More
       };
-      #containers = {}; #TODO:
+      containersForce = true;
+      containers = {
+        personal = {
+          name = "Personal";
+          color = "green";
+          icon = "circle";
+          id = 1;
+        };
+        alchemy = {
+          name = "Alchemy";
+          color = "orange";
+          icon = "circle";
+          id = 2;
+        };
+        alchemy-old = {
+          name = "Alchemy-Old";
+          color = "orange";
+          icon = "briefcase";
+          id = 3;
+        };
+        xoala = {
+          name = "Xoala";
+          color = "blue";
+          icon = "circle";
+          id = 4;
+        };
+        artos = {
+          name = "Artos";
+          color = "blue";
+          icon = "briefcase";
+          id = 5;
+        };
+        prompt = {
+          name = "Prompt";
+          color = "purple";
+          icon = "circle";
+          id = 6;
+        };
+      };
       extensions = {
         force = true;
         settings = {
