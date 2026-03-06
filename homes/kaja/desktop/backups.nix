@@ -76,8 +76,8 @@
         Type = "oneshot";
         Nice = 19;
         CPUSchedulingPolicy = "batch";
+        CPUQuota = "200%";
         IOSchedulingPriority = 7;
-        PrivateTmp = true;
         ExecStart = lib.getExe (pkgs.writeShellApplication {
           name = "run-kopia-backup";
           runtimeInputs = [ pkgs.kopia pkgs.systemd pkgs.networkmanager ];
