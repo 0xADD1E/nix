@@ -1,6 +1,13 @@
 { config, pkgs, unstablePkgs, ... }:
 {
-  imports = [ ./backups.nix ./firefops.nix ./fonts.nix ./vscode.nix ./wezterm ];
+  imports = [
+    ./backups.nix
+    ./firefops.nix
+    ./fonts.nix
+    ./squashfs-handler.nix
+    ./vscode.nix
+    ./wezterm
+  ];
   home.packages = with pkgs;[
     openscad
     neovide
