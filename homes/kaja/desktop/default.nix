@@ -2,6 +2,7 @@
 {
   imports = [
     ./backups.nix
+    ./chat.nix
     ./firefops.nix
     ./fonts.nix
     ./squashfs-handler.nix
@@ -11,14 +12,10 @@
   home.packages = with pkgs;[
     openscad
     neovide
-    unstablePkgs.signal-desktop # Requires regular updates
     unstablePkgs.yt-dlp
-    telegram-desktop
-    #slacky
     chromium
     seafile-client
     kdenlive-plugin-compatible
   ];
-  programs.element-desktop.enable = true;
   programs.mpv.enable = true;
 }
