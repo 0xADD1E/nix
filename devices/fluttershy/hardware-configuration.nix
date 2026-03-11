@@ -14,8 +14,6 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  services.hardware.bolt.enable = true;
-
   fileSystems."/" =
     {
       device = "/dev/mapper/luks-a922956e-35d3-4eb1-bb9e-08236f2725d9";

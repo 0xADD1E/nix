@@ -3,6 +3,7 @@
     "${myModulesRoot}/nixos-baseline"
     "${myModulesRoot}/nixos-laptop"
     ./hardware-configuration.nix
+    ./hardware-extras.nix
   ];
   networking.hostName = "fluttershy";
   home-manager-custom = {
