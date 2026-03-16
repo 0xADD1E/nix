@@ -61,6 +61,7 @@
         "{3c078156-979c-498b-8990-85f7987dd929}" = moz "sidebery";
         "{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}" = moz "user-agent-string-switcher";
         "arc-dark-theme@afnankhan" = moz "arc-dark-theme-we";
+        "{69c84059-c632-41d0-b3bf-ae54aacb632e}" = moz "containers-theme";
       };
     };
 
@@ -73,7 +74,7 @@
       containers = {
         personal = {
           name = "Personal";
-          color = "green";
+          color = "turquoise";
           icon = "circle";
           id = 1;
         };
@@ -97,13 +98,13 @@
         };
         xoala-admin = {
           name = "Xoala-Admin";
-          color = "blue";
+          color = "green";
           icon = "circle";
           id = 7;
         };
         artos = {
           name = "Artos";
-          color = "blue";
+          color = "pink";
           icon = "circle";
           id = 5;
         };
