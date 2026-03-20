@@ -2,19 +2,11 @@
   imports = [
     "${myModulesRoot}/nixos-metal"
     ./libvirt.nix
+    ./plasma.nix
   ];
 
   # Graphical Things
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = lib.mkDefault true;
-  services.desktopManager.plasma6.enable = true;
-  environment.plasma6.excludePackages = with pkgs.kdePackages;[
-    baloo
-    milou
-    drkonqi
-    elisa
-    khelpcenter
-  ];
 
   # Audio
   services.pulseaudio.enable = false;
