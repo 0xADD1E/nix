@@ -40,6 +40,12 @@
     "nixpkgs-overlays=${myOverlaysRoot}"
   ];
   nix.settings.trusted-users = config.home-manager-custom.enabledUsers;
+  nix.settings.substituters = [
+    "https://devenv.cachix.org"
+  ];
+  nix.settings.trusted-public-keys = [
+    "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+  ];
 
   # The Essentials
   programs.neovim.enable = true;

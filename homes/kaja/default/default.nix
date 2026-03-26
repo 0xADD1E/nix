@@ -4,6 +4,7 @@
     ./cli-utils.nix
     ./ssh.nix
     ./git.nix
+    ./devtools.nix
   ];
   home.packages = with pkgs;[
     nix-closure-graph
