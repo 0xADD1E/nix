@@ -16,6 +16,10 @@
     chromium
     seafile-client
     kdenlive-plugin-compatible
+    remmina
+    libreoffice
+    jetbrains-toolbox
+    moonlight-qt
   ];
   programs.mpv.enable = true;
 }
