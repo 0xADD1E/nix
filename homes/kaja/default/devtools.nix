@@ -1,4 +1,4 @@
-{ lib, inputs, pkgs, ... }: {
+{ lib, inputs, pkgs, unstablePkgs, ... }: {
   home.packages = with pkgs;[
     codespell
     devenv
@@ -20,7 +20,7 @@
       ${pkgs.xdg-utils}/bin/xdg-open "$(echo "$1" | ${pkgs.gnused}/bin/sed 's/localhost/127.0.0.1/g')#reopen-in-workcontainer"
     '')
     awscli2
-    antigravity-rosandbox
+    unstablePkgs.antigravity-rosandbox
 
     freelens-bin
   ];
