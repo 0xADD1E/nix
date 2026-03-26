@@ -1,16 +1,16 @@
 final: prev: {
-  kubelogin-oidc = (prev.kubelogin-oidc.override { buildGoModule = final.buildGoModule; }).overrideAttrs (old: rec {
-    version = "0xADD1E-20250514";
+  kubelogin-oidc = (prev.kubelogin-oidc.override { buildGoModule = final.buildGo126Module; }).overrideAttrs (old: rec {
+    version = "main-20260320";
     src = final.fetchFromGitHub {
-      owner = "0xADD1E";
+      owner = "int128";
       repo = "kubelogin";
-      rev = "v20250514";
-      hash = "sha256-bkiZ0BF5jJWWgeai0QPOm06Gltv4HbXllHX8TQnwfAc=";
+      rev = "3a197652177214c2c226b6f7c532fe15ce7cd2f5";
+      hash = "sha256-bQvduq3NFbkjXvhVz2mBFf5M2KG8vh4o4CcY+RxvNtE=";
     };
     ldflags = [
       "-s"
       "-w"
     ];
-    vendorHash = "sha256-Q3IFvzmC/BV1vgGv+3nTYFRlajrbdSdeGJiydnZWqog=";
+    vendorHash = "sha256-mh2GzRVOVEomrs57a1Wv+N7Jcu6YnkPeVWWBx6Swojc=";
   });
 }
