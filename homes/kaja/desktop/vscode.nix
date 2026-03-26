@@ -20,6 +20,7 @@
         "editor.fontLigatures" = true;
         # Editor
         "vim.useSystemClipboard" = true;
+        "vim.highlightedyank.enable" = true;
         # Terminals
         "terminal.integrated.profiles.linux" = {
           "bash" = {
@@ -44,7 +45,7 @@
             "path" = "nu";
           };
         };
-        "terminal.integrated.defaultProfile.linux" = "nu";
+        "terminal.integrated.defaultProfile.linux" = "fish";
         # Kubernetes
         "vscode-kubernetes.kubectl-path" = "${pkgs.kubectl}/bin/kubectl";
         "vs-kubernetes" = {
