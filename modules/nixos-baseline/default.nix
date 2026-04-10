@@ -50,12 +50,7 @@
   # The Essentials
   programs.neovim.enable = true;
   programs.git.enable = true;
-  programs.htop = {
-    enable = true;
-    settings = {
-      hide_kernel_threads = false;
-    };
-  };
+  programs.htop.enable = true;
   programs.nh = {
     enable = true;
     clean.enable = true;
