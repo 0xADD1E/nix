@@ -1,13 +1,13 @@
-{
-  lib,
-  stdenv,
-  buildVscode,
-  fetchurl,
-  jq,
-  writeShellScript,
-  coreutils,
-  commandLineArgs ? "",
-  useVSCodeRipgrep ? stdenv.hostPlatform.isDarwin,
+{ lib
+, stdenv
+, buildVscode
+, fetchurl
+, jq
+, writeShellScript
+, coreutils
+, commandLineArgs ? ""
+, useVSCodeRipgrep ? stdenv.hostPlatform.isDarwin
+,
 }:
 
 let

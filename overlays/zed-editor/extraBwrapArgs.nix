@@ -1,1 +1,1 @@
-["--remount-ro /home" "--bind $HOME/Documents/Sandbox $HOME" "--ro-bind $HOME/.nix-profile $HOME/.nix-profile" ]
+[ "--remount-ro /home" "--bind $HOME/Documents/Sandbox $HOME" "--ro-bind $HOME/.nix-profile $HOME/.nix-profile" ]
