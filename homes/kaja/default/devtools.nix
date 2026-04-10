@@ -21,6 +21,7 @@
     '')
     awscli2
     unstablePkgs.antigravity-rosandbox
+    unstablePkgs.zed-editor-rosandbox
 
     freelens-bin
   ];
