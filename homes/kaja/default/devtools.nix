@@ -22,6 +22,7 @@
     awscli2
     unstablePkgs.antigravity-rosandbox
     unstablePkgs.zed-editor-rosandbox
+    unstablePkgs.opencode-desktop
 
     freelens-bin
   ];
