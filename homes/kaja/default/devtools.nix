@@ -20,6 +20,10 @@
       ${pkgs.xdg-utils}/bin/xdg-open "$(echo "$1" | ${pkgs.gnused}/bin/sed 's/localhost/127.0.0.1/g')#reopen-in-workcontainer"
     '')
     awscli2
+    watchman
+
+    bruno
+
     unstablePkgs.antigravity-rosandbox
     unstablePkgs.zed-editor-rosandbox
     unstablePkgs.opencode-desktop
