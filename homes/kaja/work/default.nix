@@ -1,4 +1,7 @@
 { pkgs, x86Pkgs, osConfig, lib, ... }: {
+  imports = [
+    ./mail.nix
+  ];
   home.packages = [
     x86Pkgs.clickup
   ] ++ (

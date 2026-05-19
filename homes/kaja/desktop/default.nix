@@ -5,6 +5,7 @@
     ./chat.nix
     ./firefops.nix
     ./fonts.nix
+    ./mail.nix
     ./squashfs-handler.nix
     ./vscode.nix
     ./wezterm
