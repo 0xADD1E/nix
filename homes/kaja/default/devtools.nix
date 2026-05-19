@@ -1,4 +1,13 @@
 { lib, inputs, pkgs, unstablePkgs, ... }: {
+  editorconfig = {
+    enable = true;
+    settings = {
+      "*" = {
+        indent_style = "space";
+        indent_size = 4;
+      };
+    };
+  };
   home.packages = with pkgs;[
     codespell
     devenv
