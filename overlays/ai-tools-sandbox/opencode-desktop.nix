@@ -1,30 +1,29 @@
-{
-  bun,
-  cargo,
-  cargo-tauri,
-  dbus,
-  glib,
-  glib-networking,
-  gst_all_1,
-  gtk3,
-  jq,
-  lib,
-  libappindicator-gtk3,
-  librsvg,
-  libsoup_3,
-  makeWrapper,
-  nodejs,
-  opencode,
-  openssl,
-  pkg-config,
-  rustPlatform,
-  rustc,
-  stdenvNoCC,
-  webkitgtk_4_1,
-  wrapGAppsHook4,
-  bubblewrap,
-  bash,
-  uv
+{ bun
+, cargo
+, cargo-tauri
+, dbus
+, glib
+, glib-networking
+, gst_all_1
+, gtk3
+, jq
+, lib
+, libappindicator-gtk3
+, librsvg
+, libsoup_3
+, makeWrapper
+, nodejs
+, opencode
+, openssl
+, pkg-config
+, rustPlatform
+, rustc
+, stdenvNoCC
+, webkitgtk_4_1
+, wrapGAppsHook4
+, bubblewrap
+, bash
+, uv
 }:
 
 let
