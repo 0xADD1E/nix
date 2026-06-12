@@ -14,7 +14,7 @@
     nixos-apple-silicon.url = "github:nix-community/nixos-apple-silicon";
     nixos-muvm-fex.url = "github:nrabulinski/nixos-muvm-fex";
     opnix.url = "github:brizzbuzz/opnix";
-
+    microvm.url = "github:microvm-nix/microvm.nix";
 
     # Only one nixpkgs
     nixos-vfio.inputs.nixpkgs.follows = "nixpkgs";
@@ -29,10 +29,11 @@
     nixos-muvm-fex.inputs.nixos-apple-silicon.follows = "nixos-apple-silicon";
     nixos-muvm-fex.inputs.nixpkgs.follows = "unstablePkgs";
     opnix.inputs.nixpkgs.follows = "nixpkgs";
+    microvm.inputs.nixpkgs.follows = "unstablePkgs";
   };
   outputs = inputs@{ self, nixpkgs, ... }:
     let
-      specialArgs = { inherit inputs; myModulesRoot = ./modules; myOverlaysRoot = ./overlays; };
+      specialArgs = { inherit inputs; myModulesRoot = ./modules; myHomesRoot=./homes; myOverlaysRoot = ./overlays; };
       hosts = [
         { hostname = "fluttershy"; system = "x86_64-linux"; kind = "nixos"; }
         { hostname = "penguin"; system = "x86_64-linux"; kind = "nixos"; }
@@ -52,6 +53,7 @@
           inputs.rust-overlay.overlays.default
           inputs.nixgl.overlay
           inputs.firefox.overlays.firefox
+          inputs.microvm.overlay
           (import ./overlays)
         ];
       });
