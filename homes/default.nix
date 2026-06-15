@@ -3,7 +3,7 @@ let
   # Must expose description, extraGroups, and homeModule
   usersDir = (builtins.readDir ./.);
   filenames = builtins.attrNames usersDir;
-  toRegister = builtins.filter (f: (f != "default.nix")) filenames;
+  toRegister = builtins.filter (f: (f != "default.nix" "modulesetup.nix" "homesetup.nix")) filenames;
   usersAttrs = usernames: builtins.listToAttrs (builtins.map
     (f:
       let
