@@ -33,9 +33,9 @@
 
     bruno
 
-    unstablePkgs.antigravity-rosandbox
-    unstablePkgs.zed-editor-rosandbox
-    unstablePkgs.opencode-desktop
+    #unstablePkgs.antigravity-rosandbox
+    #unstablePkgs.zed-editor-rosandbox
+    #unstablePkgs.opencode-desktop
 
     freelens-bin
   ];
