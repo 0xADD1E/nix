@@ -1,9 +1,9 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     unstablePkgs.url = "github:NixOS/nixpkgs/master";
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
-    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
+    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-26.05";
     nixos-vfio.url = "github:j-brn/nixos-vfio";
     nixgl.url = "github:nix-community/nixGL";
     rust-overlay.url = "github:oxalica/rust-overlay";

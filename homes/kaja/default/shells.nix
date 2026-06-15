@@ -19,7 +19,6 @@
       formats
       desktop_notifications
       gstat
-      highlight
       polars
       query
     ];
