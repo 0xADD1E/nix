@@ -18,8 +18,13 @@
     {
       device = "/dev/mapper/luks-a922956e-35d3-4eb1-bb9e-08236f2725d9";
       fsType = "btrfs";
-      options = [ "subvol=@" ];
+      options = [ "subvol=@" "compress=zstd" ];
     };
+  fileSystems."/swap" = {
+    device = "/dev/mapper/luks-a922956e-35d3-4eb1-bb9e-08236f2725d9";
+    fsType = "btrfs";
+    options = [ "subvol=@swap" "noatime" "compress=none" ];
+  };
 
   boot.initrd.luks.devices."luks-a922956e-35d3-4eb1-bb9e-08236f2725d9".device = "/dev/disk/by-uuid/a922956e-35d3-4eb1-bb9e-08236f2725d9";
 
@@ -37,7 +42,10 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  swapDevices = [ ];
+  swapDevices = [{
+    device = "/swap/swapfile";
+    size = 32 * 1024; # Creates an 8GB swap file 
+  }];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
