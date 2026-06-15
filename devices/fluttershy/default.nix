@@ -2,6 +2,7 @@
   imports = [
     "${myModulesRoot}/nixos-baseline"
     "${myModulesRoot}/nixos-laptop"
+    "${myModulesRoot}/nixos-microvm"
     ./hardware-configuration.nix
     ./hardware-extras.nix
   ];
