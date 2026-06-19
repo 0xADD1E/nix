@@ -11,4 +11,5 @@
   environment.systemPackages = [
     pkgs.kdePackages.konqueror
   ];
+  programs.kdeconnect.enable = true;
 }
