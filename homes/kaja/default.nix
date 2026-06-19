@@ -9,6 +9,7 @@
         linux = ./linux;
         deck = ./deck;
         work = ./work;
+        clanker-sandbox = ./clanker-sandbox;
       };
     in
     {
