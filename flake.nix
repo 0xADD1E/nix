@@ -14,7 +14,7 @@
     nixos-apple-silicon.url = "github:nix-community/nixos-apple-silicon";
     nixos-muvm-fex.url = "github:nrabulinski/nixos-muvm-fex";
     opnix.url = "github:brizzbuzz/opnix";
-    microvm.url = "github:microvm-nix/microvm.nix";
+    microvm.url = "github:0xADD1E/microvm.nix";
     spectrum.url = "git+https://spectrum-os.org/git/spectrum";
     spectrum.flake = false;
 
@@ -31,8 +31,8 @@
     nixos-muvm-fex.inputs.nixos-apple-silicon.follows = "nixos-apple-silicon";
     nixos-muvm-fex.inputs.nixpkgs.follows = "unstablePkgs";
     opnix.inputs.nixpkgs.follows = "nixpkgs";
-    #microvm.inputs.nixpkgs.follows = "nixpkgs";
-    #microvm.inputs.spectrum.follows = "spectrum";
+    microvm.inputs.nixpkgs.follows = "nixpkgs";
+    microvm.inputs.spectrum.follows = "spectrum";
   };
   outputs = inputs@{ self, nixpkgs, ... }:
     let
@@ -56,7 +56,6 @@
           inputs.rust-overlay.overlays.default
           inputs.nixgl.overlay
           inputs.firefox.overlays.firefox
-          inputs.microvm.overlay
           (import ./overlays)
         ];
       });

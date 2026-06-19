@@ -7,41 +7,24 @@
       extraModules = [
         (import myHomesRoot).moduleSetup
         (import ./clanker-sandbox)
+        (import ./writable-store-overlay.nix)
         (import myHomesRoot).homeSetup
       ];
       config = {
         users.users.root.password = "toor";
+        users.users.kaja.password = "kaja";
         services.openssh.settings.PermitRootLogin = "yes";
         microvm = {
           #graphics.enable=true;
           #hypervisor = "cloud-hypervisor";
           hypervisor = "qemu";
-          qemu.machine="q35";
-          hotplugMem = 8 * 1024; #8GB
+          qemu.machine = "q35";
+          hotplugMem = 32 * 1024; #8GB
           vsock = {
             cid = 3;
             ssh.enable = true;
           };
-          writableStoreOverlay="/nix/.rw-store/vol";
-          preStart=''
-            rm -rf /home/kaja/Documents/Sandbox/.nix_store/vol
-            mkdir /home/kaja/Documents/Sandbox/.nix_store/vol
-          '';
           shares = [
-            {
-              source = "/nix/store";
-              mountPoint = "/nix/.ro-store";
-              tag = "ro-store";
-              proto = "virtiofs";
-              readOnly = true;
-            }
-            {
-              source = "/home/kaja/Documents/Sandbox/.nix_store";
-              mountPoint = "/nix/.rw-store";
-              tag = "rw-store";
-              proto = "virtiofs";
-              readOnly = false;
-            }
             {
               source = "/home/kaja/Documents/Sandbox/.opencode-mem";
               mountPoint = "/home/kaja/.opencode-mem";
