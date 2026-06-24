@@ -1,10 +1,11 @@
-{ myModulesRoot, pkgs, ... }: {
+{ myModulesRoot, pkgs, ... }:
+let runAsUser = "kaja"; in {
   imports = [
     "${myModulesRoot}/nixos-baseline"
   ];
   home-manager-custom = {
     homeModuleFlags = [ "linux" "clanker-sandbox" ];
-    enabledUsers = [ "kaja" ];
+    enabledUsers = [ "${runAsUser}" ];
   };
   environment.systemPackages = [
     pkgs.opencode
@@ -17,9 +18,9 @@
     environment = {
       OPENCODE_SERVER_PASSWORD = "opencode";
     };
-    path = [ ];
+    path = [ "/home/${runAsUser}/.nix-profile/bin" "/run/current-system/sw/bin/nix" ];
     serviceConfig = {
-      User = "kaja";
+      User = runAsUser;
       ExecStart = "${pkgs.opencode}/bin/opencode serve --hostname 0.0.0.0";
     };
   };
